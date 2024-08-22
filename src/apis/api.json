@@ -1,0 +1,1286 @@
+{
+    "x-generator": "NSwag v14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))",
+    "openapi": "3.0.0",
+    "info": {
+      "title": "DepartmentManagement API",
+      "version": "1.0.0"
+    },
+    "paths": {
+      "/api/Departments/GetDepartmentWithPagination": {
+        "get": {
+          "tags": [
+            "Departments"
+          ],
+          "operationId": "GetDepartmentWithPagination",
+          "parameters": [
+            {
+              "name": "PageNumber",
+              "in": "query",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "x-position": 1
+            },
+            {
+              "name": "PageSize",
+              "in": "query",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "x-position": 2
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/PaginatedListOfDepartmentDto"
+                  }
+                }
+              }
+            }
+          },
+          "security": [
+            {
+              "JWT": []
+            }
+          ]
+        }
+      },
+      "/api/Departments": {
+        "get": {
+          "tags": [
+            "Departments"
+          ],
+          "operationId": "GetDepartmentList",
+          "responses": {
+            "200": {
+              "description": "",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/DepartmentVM"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "security": [
+            {
+              "JWT": []
+            }
+          ]
+        },
+        "post": {
+          "tags": [
+            "Departments"
+          ],
+          "operationId": "CreateDepartment",
+          "requestBody": {
+            "x-name": "command",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateDepartmentCommamd"
+                }
+              }
+            },
+            "required": true,
+            "x-position": 1
+          },
+          "responses": {
+            "200": {
+              "description": "",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "string",
+                    "format": "guid"
+                  }
+                }
+              }
+            }
+          },
+          "security": [
+            {
+              "JWT": []
+            }
+          ]
+        }
+      },
+      "/api/Departments/CheckCodeDuplicateDepartment": {
+        "get": {
+          "tags": [
+            "Departments"
+          ],
+          "operationId": "CheckCodeDuplicateDepartment",
+          "parameters": [
+            {
+              "name": "Code",
+              "in": "query",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "nullable": true
+              },
+              "x-position": 1
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          },
+          "security": [
+            {
+              "JWT": []
+            }
+          ]
+        }
+      },
+      "/api/Departments/CheckUsedDepartment": {
+        "get": {
+          "tags": [
+            "Departments"
+          ],
+          "operationId": "CheckUsedDepartment",
+          "parameters": [
+            {
+              "name": "Id",
+              "in": "query",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "format": "guid"
+              },
+              "x-position": 1
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          },
+          "security": [
+            {
+              "JWT": []
+            }
+          ]
+        }
+      },
+      "/api/Departments/{id}": {
+        "put": {
+          "tags": [
+            "Departments"
+          ],
+          "operationId": "UpdateDepartment",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "format": "guid"
+              },
+              "x-position": 1
+            }
+          ],
+          "requestBody": {
+            "x-name": "command",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateDepartmentCommand"
+                }
+              }
+            },
+            "required": true,
+            "x-position": 2
+          },
+          "responses": {
+            "200": {
+              "description": ""
+            }
+          },
+          "security": [
+            {
+              "JWT": []
+            }
+          ]
+        },
+        "delete": {
+          "tags": [
+            "Departments"
+          ],
+          "operationId": "DeleteDepartment",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "format": "guid"
+              },
+              "x-position": 1
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": ""
+            }
+          },
+          "security": [
+            {
+              "JWT": []
+            }
+          ]
+        }
+      },
+      "/api/Users": {
+        "get": {
+          "tags": [
+            "Users"
+          ],
+          "operationId": "GetUserVMs",
+          "responses": {
+            "200": {
+              "description": "",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/UserVM"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/Users/{id}": {
+        "put": {
+          "tags": [
+            "Users"
+          ],
+          "operationId": "UpdateUser",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              },
+              "x-position": 2
+            }
+          ],
+          "requestBody": {
+            "x-name": "updateUserCommand",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateUserCommand"
+                }
+              }
+            },
+            "required": true,
+            "x-position": 1
+          },
+          "responses": {
+            "200": {
+              "description": ""
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "Users"
+          ],
+          "operationId": "DeleteUser",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              },
+              "x-position": 1
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": ""
+            }
+          }
+        }
+      },
+      "/api/Users/GetUsersWithPagination": {
+        "get": {
+          "tags": [
+            "Users"
+          ],
+          "operationId": "GetUsersWithPagination",
+          "parameters": [
+            {
+              "name": "PageNumber",
+              "in": "query",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "x-position": 1
+            },
+            {
+              "name": "PageSize",
+              "in": "query",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "x-position": 2
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/PaginatedListOfUserVM"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/Users/CheckEmailUserDuplicate": {
+        "get": {
+          "tags": [
+            "Users"
+          ],
+          "operationId": "CheckEmailUserDuplicate",
+          "parameters": [
+            {
+              "name": "Email",
+              "in": "query",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "nullable": true
+              },
+              "x-position": 1
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/Users/CreateUser": {
+        "post": {
+          "tags": [
+            "Users"
+          ],
+          "operationId": "CreateUser",
+          "parameters": [
+            {
+              "name": "Email",
+              "in": "query",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "nullable": true
+              },
+              "x-position": 1
+            },
+            {
+              "name": "Password",
+              "in": "query",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "nullable": true
+              },
+              "x-position": 2
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/Users/register": {
+        "post": {
+          "tags": [
+            "Users"
+          ],
+          "operationId": "PostApiUsersRegister",
+          "requestBody": {
+            "x-name": "registration",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegisterRequest"
+                }
+              }
+            },
+            "x-position": 1
+          },
+          "responses": {
+            "200": {
+              "description": ""
+            },
+            "400": {
+              "description": "",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HttpValidationProblemDetails"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/Users/login": {
+        "post": {
+          "tags": [
+            "Users"
+          ],
+          "operationId": "PostApiUsersLogin",
+          "parameters": [
+            {
+              "name": "useCookies",
+              "in": "query",
+              "schema": {
+                "type": "boolean",
+                "nullable": true
+              },
+              "x-position": 2
+            },
+            {
+              "name": "useSessionCookies",
+              "in": "query",
+              "schema": {
+                "type": "boolean",
+                "nullable": true
+              },
+              "x-position": 3
+            }
+          ],
+          "requestBody": {
+            "x-name": "login",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginRequest"
+                }
+              }
+            },
+            "x-position": 1
+          },
+          "responses": {
+            "200": {
+              "description": "",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/AccessTokenResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/Users/refresh": {
+        "post": {
+          "tags": [
+            "Users"
+          ],
+          "operationId": "PostApiUsersRefresh",
+          "requestBody": {
+            "x-name": "refreshRequest",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RefreshRequest"
+                }
+              }
+            },
+            "x-position": 1
+          },
+          "responses": {
+            "200": {
+              "description": "",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/AccessTokenResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/Users/confirmEmail": {
+        "get": {
+          "tags": [
+            "Users"
+          ],
+          "operationId": "GetApiUsersConfirmEmail",
+          "parameters": [
+            {
+              "name": "userId",
+              "in": "query",
+              "schema": {
+                "type": "string",
+                "nullable": true
+              },
+              "x-position": 1
+            },
+            {
+              "name": "code",
+              "in": "query",
+              "schema": {
+                "type": "string",
+                "nullable": true
+              },
+              "x-position": 2
+            },
+            {
+              "name": "changedEmail",
+              "in": "query",
+              "schema": {
+                "type": "string",
+                "nullable": true
+              },
+              "x-position": 3
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": ""
+            }
+          }
+        }
+      },
+      "/api/Users/resendConfirmationEmail": {
+        "post": {
+          "tags": [
+            "Users"
+          ],
+          "operationId": "PostApiUsersResendConfirmationEmail",
+          "requestBody": {
+            "x-name": "resendRequest",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResendConfirmationEmailRequest"
+                }
+              }
+            },
+            "x-position": 1
+          },
+          "responses": {
+            "200": {
+              "description": ""
+            }
+          }
+        }
+      },
+      "/api/Users/forgotPassword": {
+        "post": {
+          "tags": [
+            "Users"
+          ],
+          "operationId": "PostApiUsersForgotPassword",
+          "requestBody": {
+            "x-name": "resetRequest",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForgotPasswordRequest"
+                }
+              }
+            },
+            "x-position": 1
+          },
+          "responses": {
+            "200": {
+              "description": ""
+            },
+            "400": {
+              "description": "",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HttpValidationProblemDetails"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/Users/resetPassword": {
+        "post": {
+          "tags": [
+            "Users"
+          ],
+          "operationId": "PostApiUsersResetPassword",
+          "requestBody": {
+            "x-name": "resetRequest",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResetPasswordRequest"
+                }
+              }
+            },
+            "x-position": 1
+          },
+          "responses": {
+            "200": {
+              "description": ""
+            },
+            "400": {
+              "description": "",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HttpValidationProblemDetails"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/Users/manage/2fa": {
+        "post": {
+          "tags": [
+            "Users"
+          ],
+          "operationId": "PostApiUsersManage2fa",
+          "requestBody": {
+            "x-name": "tfaRequest",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TwoFactorRequest"
+                }
+              }
+            },
+            "x-position": 1
+          },
+          "responses": {
+            "200": {
+              "description": "",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TwoFactorResponse"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HttpValidationProblemDetails"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": ""
+            }
+          },
+          "security": [
+            {
+              "JWT": []
+            }
+          ]
+        }
+      },
+      "/api/Users/manage/info": {
+        "get": {
+          "tags": [
+            "Users"
+          ],
+          "operationId": "GetApiUsersManageInfo",
+          "responses": {
+            "200": {
+              "description": "",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/InfoResponse"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HttpValidationProblemDetails"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": ""
+            }
+          },
+          "security": [
+            {
+              "JWT": []
+            }
+          ]
+        },
+        "post": {
+          "tags": [
+            "Users"
+          ],
+          "operationId": "PostApiUsersManageInfo",
+          "requestBody": {
+            "x-name": "infoRequest",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InfoRequest"
+                }
+              }
+            },
+            "x-position": 1
+          },
+          "responses": {
+            "200": {
+              "description": "",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/InfoResponse"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HttpValidationProblemDetails"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": ""
+            }
+          },
+          "security": [
+            {
+              "JWT": []
+            }
+          ]
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "PaginatedListOfDepartmentDto": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "items": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/DepartmentDto"
+              }
+            },
+            "pageNumber": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "totalPages": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "totalCount": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "hasPreviousPage": {
+              "type": "boolean"
+            },
+            "hasNextPage": {
+              "type": "boolean"
+            }
+          }
+        },
+        "DepartmentDto": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "type": "string",
+              "format": "guid"
+            },
+            "code": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            }
+          }
+        },
+        "DepartmentVM": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "type": "string",
+              "format": "guid"
+            },
+            "code": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "createdDate": {
+              "type": "string",
+              "format": "date-time",
+              "nullable": true
+            }
+          }
+        },
+        "CreateDepartmentCommamd": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "code": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            }
+          }
+        },
+        "UpdateDepartmentCommand": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "type": "string",
+              "format": "guid"
+            },
+            "code": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            }
+          }
+        },
+        "UserVM": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "userName": {
+              "type": "string",
+              "nullable": true
+            },
+            "fullName": {
+              "type": "string",
+              "nullable": true
+            },
+            "email": {
+              "type": "string",
+              "nullable": true
+            },
+            "phoneNumber": {
+              "type": "string",
+              "nullable": true
+            },
+            "address": {
+              "type": "string",
+              "nullable": true
+            },
+            "departmentId": {
+              "type": "string",
+              "format": "guid",
+              "nullable": true
+            },
+            "password": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        },
+        "UpdateUserCommand": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "fullName": {
+              "type": "string"
+            },
+            "phoneNumber": {
+              "type": "string"
+            },
+            "address": {
+              "type": "string"
+            },
+            "departmentId": {
+              "type": "string",
+              "format": "guid",
+              "nullable": true
+            }
+          }
+        },
+        "PaginatedListOfUserVM": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "items": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/UserVM"
+              }
+            },
+            "pageNumber": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "totalPages": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "totalCount": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "hasPreviousPage": {
+              "type": "boolean"
+            },
+            "hasNextPage": {
+              "type": "boolean"
+            }
+          }
+        },
+        "HttpValidationProblemDetails": {
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/ProblemDetails"
+            },
+            {
+              "type": "object",
+              "additionalProperties": {
+                "nullable": true
+              },
+              "properties": {
+                "errors": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "ProblemDetails": {
+          "type": "object",
+          "additionalProperties": {
+            "nullable": true
+          },
+          "properties": {
+            "type": {
+              "type": "string",
+              "nullable": true
+            },
+            "title": {
+              "type": "string",
+              "nullable": true
+            },
+            "status": {
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            },
+            "detail": {
+              "type": "string",
+              "nullable": true
+            },
+            "instance": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        },
+        "RegisterRequest": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "email": {
+              "type": "string"
+            },
+            "password": {
+              "type": "string"
+            }
+          }
+        },
+        "AccessTokenResponse": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "tokenType": {
+              "type": "string"
+            },
+            "accessToken": {
+              "type": "string"
+            },
+            "expiresIn": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "refreshToken": {
+              "type": "string"
+            }
+          }
+        },
+        "LoginRequest": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "email": {
+              "type": "string"
+            },
+            "password": {
+              "type": "string"
+            },
+            "twoFactorCode": {
+              "type": "string",
+              "nullable": true
+            },
+            "twoFactorRecoveryCode": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        },
+        "RefreshRequest": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "refreshToken": {
+              "type": "string"
+            }
+          }
+        },
+        "ResendConfirmationEmailRequest": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "email": {
+              "type": "string"
+            }
+          }
+        },
+        "ForgotPasswordRequest": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "email": {
+              "type": "string"
+            }
+          }
+        },
+        "ResetPasswordRequest": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "email": {
+              "type": "string"
+            },
+            "resetCode": {
+              "type": "string"
+            },
+            "newPassword": {
+              "type": "string"
+            }
+          }
+        },
+        "TwoFactorResponse": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "sharedKey": {
+              "type": "string"
+            },
+            "recoveryCodesLeft": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "recoveryCodes": {
+              "type": "array",
+              "nullable": true,
+              "items": {
+                "type": "string"
+              }
+            },
+            "isTwoFactorEnabled": {
+              "type": "boolean"
+            },
+            "isMachineRemembered": {
+              "type": "boolean"
+            }
+          }
+        },
+        "TwoFactorRequest": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enable": {
+              "type": "boolean",
+              "nullable": true
+            },
+            "twoFactorCode": {
+              "type": "string",
+              "nullable": true
+            },
+            "resetSharedKey": {
+              "type": "boolean"
+            },
+            "resetRecoveryCodes": {
+              "type": "boolean"
+            },
+            "forgetMachine": {
+              "type": "boolean"
+            }
+          }
+        },
+        "InfoResponse": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "email": {
+              "type": "string"
+            },
+            "isEmailConfirmed": {
+              "type": "boolean"
+            }
+          }
+        },
+        "InfoRequest": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "newEmail": {
+              "type": "string",
+              "nullable": true
+            },
+            "newPassword": {
+              "type": "string",
+              "nullable": true
+            },
+            "oldPassword": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        }
+      },
+      "securitySchemes": {
+        "JWT": {
+          "type": "apiKey",
+          "description": "Type into the textbox: Bearer {your JWT token}.",
+          "name": "Authorization",
+          "in": "header"
+        }
+      }
+    },
+    "security": [
+      {
+        "JWT": []
+      }
+    ]
+  }
