@@ -4,12 +4,12 @@ import type DepartmentDto from '~/apis/Api';
 export const useMyDepartmentStore = defineStore({
   id: 'myDepartmentStore',
   state: () => ({
-    items: [] as DepartmentDto[],
-   }),
+     listDepartments : ref<Array<DepartmentDto>>([]),
+     }),
   actions: {
    async  getList() {
       const useDepartment = useDepartmentClient();
-      var rs = await useDepartment.getDepartmentList()
+      return  await useDepartment.getDepartmentList();
     }
   }
 })

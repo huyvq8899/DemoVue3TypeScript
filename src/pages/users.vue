@@ -12,10 +12,11 @@
 <script lang="ts" setup>
 
 const abc = ref<number>(0);
+
 const departmenrStore = useMyDepartmentStore();
 
 onBeforeMount( async () => {
- await departmenrStore.getList()
+
 
 }) 
 
